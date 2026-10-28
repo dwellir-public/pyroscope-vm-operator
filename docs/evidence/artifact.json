@@ -1,0 +1,10 @@
+{
+  "artifact_sha256": "711446e66a198e6b4bad4d6fa8ce971864b82f83677978f8f1f432b333756e9e",
+  "source_sha256": {
+    "src/charm.py": "1c32b8da9819f53e0a94cddcaeea6063aafbdc7f434f8fc68bf43ea792f906af",
+    "src/config_builder.py": "7341fc9b3373910bb7eb70784db81017f703de70c3ad9da18b981f618aae5519",
+    "src/pyroscope.py": "475b874191038ecb0c5f3c72be87516f6007fa538ecd04c4b9e5428c12137f60"
+  },
+  "unit": "pyroscope-vm/0",
+  "charm_revision": 6
+}

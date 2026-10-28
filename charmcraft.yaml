@@ -1,0 +1,76 @@
+type: charm
+name: pyroscope-vm
+title: Pyroscope VM
+summary: Grafana Pyroscope profiling storage on Ubuntu machines.
+description: |
+  Dwellir machine charm for Grafana Pyroscope. Receives native Pyroscope and
+  OTLP profiles, publishes a Grafana datasource and v3 machine observability.
+  Supports one monolithic unit with persistent local or S3-backed storage.
+base: ubuntu@24.04
+platforms:
+  amd64:
+parts:
+  charm:
+    plugin: uv
+    source: .
+    build-snaps:
+      - astral-uv
+storage:
+  pyroscope-persisted:
+    type: filesystem
+    location: /var/lib/pyroscope
+    description: Local profile blocks and compactor state.
+requires:
+  s3:
+    interface: s3
+    limit: 1
+    optional: true
+provides:
+  profiling:
+    interface: profiling
+    optional: true
+    description: Receive OTLP profiles using Canonical's profiling contract.
+  grafana-source:
+    interface: grafana_datasource
+    optional: true
+  send-datasource:
+    interface: grafana_datasource_exchange
+    optional: true
+  machine-observability:
+    interface: machine_observability
+    optional: true
+peers:
+  replicas:
+    interface: pyroscope_replica
+actions:
+  health:
+    description: Report local service and readiness status without exposing credentials.
+config:
+  options:
+    package-version:
+      type: string
+      default: '1.21.0'
+      description: |
+        Exact Grafana APT Pyroscope 1.x version, at least 1.21.0. Pinning avoids
+        automatic storage architecture changes. Changing this value installs the
+        requested version; charm refresh alone never upgrades the workload.
+    http-port:
+      type: int
+      default: 4040
+      description: HTTP and OTLP gRPC ingestion port. Pyroscope serves OTLP on its HTTP listener.
+    grpc-port:
+      type: int
+      default: 9095
+      description: Internal Pyroscope gRPC port, restricted to loopback.
+    log-level:
+      type: string
+      default: info
+      description: Pyroscope log level, debug, info, warn or error.
+    retention-period:
+      type: string
+      default: 14d
+      description: Profile block retention, such as 14d or 720h. Use 0s to disable age retention.
+    reporting-enabled:
+      type: boolean
+      default: false
+      description: Send anonymous Pyroscope usage statistics to Grafana.

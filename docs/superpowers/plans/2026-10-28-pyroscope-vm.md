@@ -27,9 +27,17 @@ Outcome: backend capabilities added. Existing consumers stay unchanged. Live cla
 
 ## Tasks
 
-- [ ] Record design, source provenance and create repository tooling. Copy unchanged profiling, grafana_source and machine_observability libraries. Declare consolidated metadata and uv dependencies.
-- [ ] Write failing tests for filesystem/S3 rendering, invalid values and canonical endpoint data. Run pytest and capture missing implementation failures. Implement config_builder.py and endpoint helpers until those tests pass.
-- [ ] Write failing helper tests for config preflight, atomic writes, readiness and package installation. Implement pyroscope.py using upstream paths; verify candidate with `pyroscope -config.file PATH -version` because Pyroscope has no Loki `-verify-config` flag.
+- [x] Record design, source provenance and create repository tooling. Copy unchanged profiling, grafana_source and machine_observability libraries. Declare consolidated metadata and uv dependencies.
+- [x] Write failing tests for filesystem/S3 rendering, invalid values and canonical endpoint data. Run pytest and capture missing implementation failures. Implement config_builder.py and endpoint helpers until those tests pass.
+- [x] Write failing helper tests for config preflight, atomic writes, readiness and package installation. Implement pyroscope.py using upstream paths; verify candidate with `pyroscope -config.file PATH -version` because Pyroscope has no Loki `-verify-config` flag.
 - [ ] Write ops.testing event tests for lifecycle, v3 identity, profiling publication, rollback, relation removal and storage safety. Implement charm.py and verify those tests.
-- [ ] Add retained-model Jubilant tests requiring explicit localhost-localhost model and CHARM_PATH. Inspect existing status first. Deploy or refresh only the test backend, integrate with existing collector/Grafana, and query newly ingested profiles. Never run temp_model cleanup against the retained stack.
-- [ ] Run format/lint/static/unit, lock validation and Charmcraft build. Run live tests if controller access is available. Record exact commands, failures and residual limits in docs/validation.md, then review code and changed files.
+- [x] Add retained-model Jubilant tests requiring explicit localhost-localhost model and CHARM_PATH. Inspect existing status first. Deploy or refresh only the test backend, integrate with existing collector/Grafana, and query newly ingested profiles. Never run temp_model cleanup against the retained stack.
+- [x] Run format/lint/static/unit, lock validation and Charmcraft build. Run live tests if controller access is available. Record exact commands, failures and residual limits in docs/validation.md, then review code and changed files.
+
+## Execution notes
+
+User approved implementation and retained-model reuse. Later permission changes enabled
+network/controller access. All successful Charmcraft builds used managed LXD,
+without destructive-mode builds after the user specified that constraint.
+Runtime profiling protocol incompatibility is recorded in ../../validation.md.
+Final check and live results are maintained there.

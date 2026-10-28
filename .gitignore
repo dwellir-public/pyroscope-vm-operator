@@ -1,0 +1,11 @@
+.venv/
+.tox/
+__pycache__/
+*.pyc
+.coverage
+.pytest_cache/
+.ruff_cache/
+*.charm
+build/
+charm/
+.uv-cache/

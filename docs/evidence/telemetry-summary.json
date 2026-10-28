@@ -1,0 +1,73 @@
+{
+  "workload_version": "1.21.0",
+  "s3_bucket_objects_after_flush": 10,
+  "flush_http_status": 200,
+  "metrics": {
+    "status": "success",
+    "series": 1,
+    "samples": [
+      {
+        "labels": {
+          "__name__": "up",
+          "instance": "localhost:4040",
+          "job": "pyroscope-vm",
+          "juju_application": "pyroscope-vm",
+          "juju_charm": "pyroscope-vm",
+          "juju_model": "machine-observability-v3-reference",
+          "juju_model_uuid": "e10acf49-369c-4fd0-8c0f-19035f134717",
+          "juju_unit": "pyroscope-vm/0"
+        },
+        "sample": [
+          1793204628.451,
+          "1"
+        ]
+      }
+    ]
+  },
+  "build_info": {
+    "status": "success",
+    "series": 1,
+    "samples": [
+      {
+        "labels": {
+          "__name__": "pyroscope_build_info",
+          "branch": "HEAD",
+          "goarch": "amd64",
+          "goos": "linux",
+          "goversion": "go1.25.9",
+          "instance": "localhost:4040",
+          "job": "pyroscope-vm",
+          "juju_application": "pyroscope-vm",
+          "juju_charm": "pyroscope-vm",
+          "juju_model": "machine-observability-v3-reference",
+          "juju_model_uuid": "e10acf49-369c-4fd0-8c0f-19035f134717",
+          "juju_unit": "pyroscope-vm/0",
+          "revision": "9cd4ab0a1",
+          "tags": "netgo,embedassets",
+          "version": "1.21.0"
+        },
+        "sample": [
+          1793204628.47,
+          "1"
+        ]
+      }
+    ]
+  },
+  "logs": {
+    "status": "success",
+    "series": 1,
+    "entries": 5
+  },
+  "grafana": [
+    {
+      "name": "juju_machine-observability-v3-reference_e10acf49-369c-4fd0-8c0f-19035f134717_pyroscope-vm_0",
+      "type": "grafana-pyroscope-datasource",
+      "uid": "PC47E7D3D99F2AF64",
+      "url": "http://[2001:db8:1234:1:216:3eff:fe04:8ba2]:4040",
+      "health": {
+        "message": "Data source is working",
+        "status": "OK"
+      }
+    }
+  ]
+}

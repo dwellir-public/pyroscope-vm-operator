@@ -1,0 +1,30 @@
+lint: uv-sync> .venv/bin/uv sync --locked --python-preference system --no-default-groups --group lint -p <charm-root>/.venv/bin/python
+lint: commands[0]> ruff check src tests
+All checks passed!
+lint: commands[1]> ruff format --check src tests
+7 files already formatted
+lint: commands[2]> codespell README.md DEVELOPING.md ARCHITECTURE.md docs src tests
+lint: OK ✔ in 0.34 seconds
+static: uv-sync> .venv/bin/uv sync --locked --python-preference system --no-default-groups --group integration --group lint --group unit -p <charm-root>/.venv/bin/python
+static: commands[0]> pyright --pythonpath <charm-root>/.tox/static/bin/python
+0 errors, 0 warnings, 0 informations
+WARNING: there is a new pyright version available (v1.1.402 -> v1.1.414).
+Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
+
+static: OK ✔ in 4.4 seconds
+unit: uv-sync> .venv/bin/uv sync --locked --python-preference system --no-default-groups --group unit -p <charm-root>/.venv/bin/python
+unit: commands[0]> coverage run --source=src -m pytest -q tests/unit
+................................................                         [100%]
+48 passed in 0.94s
+unit: commands[1]> coverage report
+Name                    Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------
+src/charm.py              213     35     74     13    79%   135-137, 157-161, 166, 187, 198-201, 207->210, 213, 214->216, 216->228, 221->227, 225-226, 242-254, 327, 342-347, 367
+src/config_builder.py      51      2     22      0    97%   55-56
+src/pyroscope.py          122     26     14      3    76%   27, 39-43, 76->86, 101, 113-116, 131-135, 140, 145, 157, 176, 183-188
+-------------------------------------------------------------------
+TOTAL                     386     63    110     16    81%
+  lint: OK (0.34=setup[0.15]+cmd[0.06,0.01,0.12] seconds)
+  static: OK (4.40=setup[0.03]+cmd[4.37] seconds)
+  unit: OK (1.66=setup[0.03]+cmd[1.50,0.13] seconds)
+  congratulations :) (6.43 seconds)
