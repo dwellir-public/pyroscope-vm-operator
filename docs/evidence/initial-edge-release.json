@@ -1,0 +1,32 @@
+{
+  "source_commit": "2c64a70e616df95c68b47852b61495ca5666967b",
+  "repository": "https://github.com/dwellir-public/pyroscope-vm-operator",
+  "iris_issue": "https://github.com/dwellir-public/iris-operator/issues/20",
+  "test_run": 40729130213,
+  "release_run": 40729273725,
+  "base": "ubuntu@24.04",
+  "architecture": "amd64",
+  "revision": 1,
+  "channel": "latest/edge",
+  "artifact_sha256": "900fcb1dfbe0f65f3479465c460b7ddd7efa82a65e55cf8f97dc89e230517e5e",
+  "ci_store_artifacts_identical": true,
+  "model": "localhost-localhost:admin/machine-observability-v3-reference",
+  "application": {
+    "charm": "pyroscope-vm",
+    "charm-origin": "charmhub",
+    "charm-name": "pyroscope-vm",
+    "charm-rev": 1,
+    "charm-channel": "latest/edge",
+    "version": "1.21.0",
+    "application-status": {
+      "current": "active",
+      "message": "ready, storage(s3)",
+      "since": "28 Oct 2026 17:20:08+01:00"
+    }
+  },
+  "workload_pid_before": 35438,
+  "workload_pid_after": 35438,
+  "native_profile_check": "passed, fresh nonzero CPU function stacks",
+  "otlp_profile_check": "passed through separate collector-contrib 0.148.0 fixture",
+  "existing_applications_preserved": true
+}

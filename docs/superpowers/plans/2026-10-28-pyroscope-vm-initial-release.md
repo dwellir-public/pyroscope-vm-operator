@@ -32,3 +32,9 @@ constraint. Reuse the Loki unit/lint/static workflow.
 6. Refresh only Pyroscope in the retained reference model and verify health,
    source/artifact correspondence, telemetry and model preservation.
 7. Record exact release commit, action run, artifact checksum, revision and issue URL.
+
+## Actual result
+
+All listed tasks completed. The source, action run, artifact digest, revision,
+Iris issue and verified retained-model refresh are recorded in
+[the release record](../../releases/2026-10-28-initial-edge.md).

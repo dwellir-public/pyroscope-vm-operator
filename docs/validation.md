@@ -1,5 +1,8 @@
 # Validation
 
+This is the initial local-validation record. Publication and the subsequent
+Charmhub refresh are recorded in the [initial edge release](releases/2026-10-28-initial-edge.md).
+
 Evidence date: 2026-10-28. Scope is this new backend, its interfaces and deployment
 in the retained localhost-localhost reference model. Iris and collector source
 changes are excluded. No alert artifacts are shipped.
