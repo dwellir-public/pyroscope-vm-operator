@@ -51,3 +51,22 @@ For a separate version-matched collector fixture on a retained unit, set
 This verifies that explicit fixture pipeline and does not claim the incompatible
 Canonical stable collector forwarded profiles. The fixture's version and lifecycle
 must be recorded in docs/validation.md. No custom collector ships in the charm.
+
+## Publication
+
+GitHub Actions `release.yml` follows Loki VM's release pipeline and runs only
+through `workflow_dispatch`. It builds Ubuntu 24.04 amd64 in managed LXD,
+uploads and releases to Charmhub `latest/edge`, then creates the matching GitHub
+release with the `.charm` artifact. `CHARMHUB_TOKEN` is a repository Actions
+secret scoped to `pyroscope-vm` and `latest/edge`. It must be renewed before
+its configured expiration. The release workflow reads it through
+`CHARMCRAFT_AUTH`; never put the token in source or logs.
+
+```bash
+gh workflow run release.yml --repo dwellir-public/pyroscope-vm-operator --ref main
+```
+
+Use [the initial release record](docs/releases/2026-10-28-initial-edge.md) for the
+source commit, action run, published revision and retained deployment refresh.
+Iris's missing profiling collection path is tracked in
+[iris-operator issue 20](https://github.com/dwellir-public/iris-operator/issues/20).

@@ -11,6 +11,12 @@ filesystem storage or a related S3 bucket. It pins Pyroscope 1.21.0. Pyroscope
 
 ## Deploy and integrate
 
+The published development channel is `latest/edge`:
+
+```bash
+juju deploy pyroscope-vm --channel latest/edge
+```
+
 Build in Charmcraft's managed LXD environment:
 
 ```bash
